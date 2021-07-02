@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 
 public class WeightedGraph {
 
+	// all possible names of the vertices in the graph
+	private static String[] NAMES = {"Berlin", "Rome", "Munich", "Amsterdam", "Warsaw"};
 	// for Integer[][] matrix Java will automatically fill elements with "null" value if they don't exist
 	// to remove an edge set the value of the element to "null"
 	private Integer[][] adjacencyMatrix;
-
-	private static String[] NAMES = {"Berlin", "Rome", "Munich", "Amsterdam", "Warsaw"};
-
-	//List of all the Vertexes
-	private ArrayList<Vertex> vertexes = new ArrayList<>();
+	// list of all the vertices in a graph
+	private List<Vertex> vertices = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		
@@ -19,12 +19,12 @@ public class WeightedGraph {
 
 		//Prints Matrix to the console
 		
-		System.out.println(" B " + " " + " R " + " " + " M " + " " + " A " + " " + " W ");
-		System.out.println(wG.printEdge(0,0) + wG.printEdge(1,0) + wG.printEdge(2,0) + wG.printEdge(3,0) + wG.printEdge(4,0) + wG.getVertex(0).getName());
-		System.out.println(wG.printEdge(0,1) + wG.printEdge(1,1) + wG.printEdge(2,1) + wG.printEdge(3,1) + wG.printEdge(4,1) + wG.getVertex(1).getName());
-		System.out.println(wG.printEdge(0,2) + wG.printEdge(1,2) + wG.printEdge(2,2) + wG.printEdge(3,2) + wG.printEdge(4,2) + wG.getVertex(2).getName());
-		System.out.println(wG.printEdge(0,3) + wG.printEdge(1,3) + wG.printEdge(2,3) + wG.printEdge(3,3) + wG.printEdge(4,3) + wG.getVertex(3).getName());
-		System.out.println(wG.printEdge(0,4) + wG.printEdge(1,4) + wG.printEdge(2,4) + wG.printEdge(3,4) + wG.printEdge(4,4) + wG.getVertex(4).getName());
+		System.out.println("B R M A W");
+		System.out.println(wG.printEdge(0, 0) + wG.printEdge(0, 1) + wG.printEdge(0, 2) + wG.printEdge(0, 3) + wG.printEdge(0, 4) + wG.getVertex(0).getName());
+		System.out.println(wG.printEdge(1, 0) + wG.printEdge(1, 1) + wG.printEdge(1, 2) + wG.printEdge(1, 3) + wG.printEdge(1, 4) + wG.getVertex(1).getName());
+		System.out.println(wG.printEdge(2, 0) + wG.printEdge(2, 1) + wG.printEdge(2, 2) + wG.printEdge(2, 3) + wG.printEdge(2, 4) + wG.getVertex(2).getName());
+		System.out.println(wG.printEdge(3, 0) + wG.printEdge(3, 1) + wG.printEdge(3, 2) + wG.printEdge(3, 3) + wG.printEdge(3, 4) + wG.getVertex(3).getName());
+		System.out.println(wG.printEdge(4, 0) + wG.printEdge(4, 1) + wG.printEdge(4, 2) + wG.printEdge(4, 3) + wG.printEdge(4, 4) + wG.getVertex(4).getName());
 	}
 	
 	
@@ -34,7 +34,7 @@ public class WeightedGraph {
 	 */
 	
 	/*
-	 * Constructor initiates a Matrix, Vertecies and Edges
+	 * Constructor initiates a Matrix, Vertexes and Edges
 	 */
 	public WeightedGraph(int verts, int edges, boolean random) {
 		adjacencyMatrix = new Integer[verts][verts];
@@ -53,7 +53,7 @@ public class WeightedGraph {
 	public void createVertices(int amount) {
 		for(int i = 0; i < amount; i++) {
 			Vertex v = new Vertex(NAMES[i], i);
-			vertexes.add(v);
+			vertices.add(v);
 		}
 	}
 	
@@ -74,8 +74,8 @@ public class WeightedGraph {
 			while(rdm == rdm2) {
 				rdm2 = r.nextInt(4);
 			}
-			if(getEdge(rdm, rdm2) == 0.0) {
-				makeEdge(rdm, rdm2, weight);
+			if(getEdge(rdm2, rdm) == 0.0) {
+				makeEdge(rdm2, rdm, weight);
 			}
 		}
 	}
@@ -84,37 +84,34 @@ public class WeightedGraph {
 	 * Creates given Edges for a set Matrix if boolean random is set to false in the constructor
 	 */
 	public void createEdges() {
-		makeEdge(0,1,3);	//     0 1 2 3 4
-		makeEdge(0,2,1);	//   0 0 I I I I
-		makeEdge(0,3,4);	//   1 3 0 I I I
-		makeEdge(1,3,2);	//   2 1 I 0 6 I
-		makeEdge(3,2,6);	//   3 4 2 I 0 I
-		makeEdge(3,4,1);	//   4 I I I 1 0
+		makeEdge(1, 0, 3);	//     0 1 2 3 4
+		makeEdge(2, 0, 1);	//   0 - - - - -
+		makeEdge(3, 0, 4);	//   1 3 - - - -
+		makeEdge(3, 1, 2);	//   2 1 - - 6 -
+		makeEdge(2, 3, 6);	//   3 4 2 - - -
+		makeEdge(4, 3, 1);	//   4 - - - 1 -
 	}
 	/*
 	 * Getters and Setters
 	 */
 	public Vertex getVertex(int i) {
-		return vertexes.get(i);
+		return vertices.get(i);
 	}
 	
-	public void makeEdge(int to, int from, int weight) {
-		adjacencyMatrix[to][from] = weight;
+	public void makeEdge(int from, int to, int weight) {
+		adjacencyMatrix[from][to] = weight;
 	}
 	
-	public double getEdge(int to, int from) {
-		return adjacencyMatrix[to][from];
+	public Integer getEdge(int from, int to) {
+		return adjacencyMatrix[from][to];
 	}
 	
-	private String printEdge(int to, int from) {
-		String p = adjacencyMatrix[to][from] + "";
-		String line = "";
-		if(p.equals("Infinity")) {
-			line = "Inf ";
-		}else {
-			line = adjacencyMatrix[to][from] + " ";
+	private String printEdge(int from, int to) {
+		if (adjacencyMatrix[from][to] == null) {
+			return "- ";
+		} else {
+			return adjacencyMatrix[from][to] + " ";
 		}
-		return line;
 	}
 	
 	/*

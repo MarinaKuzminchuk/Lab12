@@ -69,48 +69,30 @@
     </task>
     <servers />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="WindowStateProjectService">
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1625254564729">
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1625253899728">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1625254564729" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1625255258828">
+    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1625253899728" />
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1625257582825">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1625255258828" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1625255258827">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1625257582825" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1625257582824">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1625255258827" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1625255258827">
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1625257582824" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1625257582824">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1625255258827" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1625255258827">
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1625257582824" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1625257582824">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1625255258827" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/WeightedGraph.java</url>
-          <line>109</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1625257582824" />
+    <state x="477" y="39" key="refactoring.ChangeSignatureDialog" timestamp="1625256679750">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="477" y="39" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1625256679750" />
   </component>
 </project>
