@@ -4,23 +4,14 @@ import java.util.Random;
 
 public class WeightedGraph {
 
-	/*
-	 * The adjacencyMatrix HAS to use doubles, as we need to
-	 * set weights to infinite if they are not present. 0 only
-	 * tells us, that this is the same vertex (which cannot be visited anyways)
-	 * https://www.tutorialspoint.com/weighted-graph-representation-in-data-structure
-	 */
-	
-	//int[][] adjacencyMatrix;
-	double[][] adjacencyMatrix;
-	
-	//value of infinity
-	double inf = Double.POSITIVE_INFINITY;
-	
-	String[] names = {"Berlin", "Rome", "Munich", "Amsterdam", "Warsaw"};
-	
+	// for Integer[][] matrix Java will automatically fill elements with "null" value if they don't exist
+	// to remove an edge set the value of the element to "null"
+	private Integer[][] adjacencyMatrix;
+
+	private static String[] NAMES = {"Berlin", "Rome", "Munich", "Amsterdam", "Warsaw"};
+
 	//List of all the Vertexes
-	ArrayList<Vertex> vertexes = new ArrayList<>();
+	private ArrayList<Vertex> vertexes = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		
@@ -46,9 +37,9 @@ public class WeightedGraph {
 	 * Constructor initiates a Matrix, Vertecies and Edges
 	 */
 	public WeightedGraph(int verts, int edges, boolean random) {
-		adjacencyMatrix = new double[verts][verts];
+		adjacencyMatrix = new Integer[verts][verts];
 		createVertices(verts);
-		if(random == true) {
+		if(random) {
 			createRandomEdges(edges);
 		} else {
 			createEdges();
@@ -61,7 +52,7 @@ public class WeightedGraph {
 	 */
 	public void createVertices(int amount) {
 		for(int i = 0; i < amount; i++) {
-			Vertex v = new Vertex(names[i], i);	
+			Vertex v = new Vertex(NAMES[i], i);
 			vertexes.add(v);
 		}
 	}
@@ -87,7 +78,6 @@ public class WeightedGraph {
 				makeEdge(rdm, rdm2, weight);
 			}
 		}
-		setToInfinity();
 	}
 	
 	/*
@@ -100,20 +90,6 @@ public class WeightedGraph {
 		makeEdge(1,3,2);	//   2 1 I 0 6 I
 		makeEdge(3,2,6);	//   3 4 2 I 0 I
 		makeEdge(3,4,1);	//   4 I I I 1 0
-		setToInfinity();	// 	The built Matrix
-	}
-	
-	/*
-	 * This method sets all weights that are not present to Infinity
-	 */
-	public void setToInfinity() {
-		for(int i = 0; i < vertexes.size(); i++) {
-			for(int j = 0; j < vertexes.size(); j++) {
-				if(getEdge(i,j) == 0.0 && i != j) {
-					adjacencyMatrix[i][j] = inf;
-				}
-			}
-		}
 	}
 	/*
 	 * Getters and Setters
@@ -122,7 +98,7 @@ public class WeightedGraph {
 		return vertexes.get(i);
 	}
 	
-	public void makeEdge(int to, int from, double weight) {
+	public void makeEdge(int to, int from, int weight) {
 		adjacencyMatrix[to][from] = weight;
 	}
 	
