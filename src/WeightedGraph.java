@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class WeightedGraph {
 
 	// all possible names of the vertices in the graph
-	private static String[] NAMES = {"Berlin", "Rome", "Munich", "Amsterdam", "Warsaw"};
+	private static String[] NAMES = {"Berlin", "Rome", "Munich", "Amsterdam", "Warsaw", "Tokyo", "Paris", "London", "Seoul", "Delhi"};
 	// for Integer[][] matrix Java will automatically fill elements with "null" value if they don't exist
 	// to remove an edge set the value of the element to "null"
 	private Integer[][] adjacencyMatrix;
@@ -15,7 +12,7 @@ public class WeightedGraph {
 	
 	public static void main(String[] args) {
 		
-		WeightedGraph wG = new WeightedGraph(5, 12, false);
+		WeightedGraph wG = new WeightedGraph(5, 100, true);
 
 		//Prints Matrix to the console
 		
@@ -25,10 +22,22 @@ public class WeightedGraph {
 		System.out.println(wG.printEdge(2, 0) + wG.printEdge(2, 1) + wG.printEdge(2, 2) + wG.printEdge(2, 3) + wG.printEdge(2, 4) + wG.getVertex(2).getName());
 		System.out.println(wG.printEdge(3, 0) + wG.printEdge(3, 1) + wG.printEdge(3, 2) + wG.printEdge(3, 3) + wG.printEdge(3, 4) + wG.getVertex(3).getName());
 		System.out.println(wG.printEdge(4, 0) + wG.printEdge(4, 1) + wG.printEdge(4, 2) + wG.printEdge(4, 3) + wG.printEdge(4, 4) + wG.getVertex(4).getName());
+
+		System.out.println(Dijkstra.cheapestPath(wG, 0, 3));
+		System.out.println(Dijkstra.shortestPath(wG, 0, 3));
 	}
-	
-	
-	
+
+	Map<Integer, Integer> getNeighbourWithEdgeWeight(int vertex) {
+		Map<Integer, Integer> neighborWithEdgeWeight = new HashMap<>();
+		for (int i = 0; i < adjacencyMatrix.length; i++) {
+			Integer edgeWeight = adjacencyMatrix[vertex][i];
+			if (edgeWeight != null) {
+				neighborWithEdgeWeight.put(i, edgeWeight);
+			}
+		}
+		return neighborWithEdgeWeight;
+	}
+
 	/*
 	 * Methods to build the Matrix
 	 */
@@ -64,18 +73,18 @@ public class WeightedGraph {
 	public void createRandomEdges(int amount) {
 		Random r = new Random();
 
-		for(int i = 0; i <= amount; i++) {
-			int rdm = r.nextInt(4);
-			int rdm2 = r.nextInt(4);
+		for(int i = 0; i < amount; i++) {
+			int vertexFrom = r.nextInt(vertices.size());
+			int vertexTo = r.nextInt(vertices.size());
 			int weight = r.nextInt(10);
 			
 			//In order to avoid weights between one and the same vertex
 			
-			while(rdm == rdm2) {
-				rdm2 = r.nextInt(4);
+			while(vertexFrom == vertexTo) {
+				vertexTo = r.nextInt(vertices.size());
 			}
-			if(getEdge(rdm2, rdm) == 0.0) {
-				makeEdge(rdm2, rdm, weight);
+			if(getEdge(vertexFrom, vertexTo) == null) {
+				makeEdge(vertexFrom, vertexTo, weight);
 			}
 		}
 	}
@@ -84,12 +93,22 @@ public class WeightedGraph {
 	 * Creates given Edges for a set Matrix if boolean random is set to false in the constructor
 	 */
 	public void createEdges() {
-		makeEdge(1, 0, 3);	//     0 1 2 3 4
-		makeEdge(2, 0, 1);	//   0 - - - - -
-		makeEdge(3, 0, 4);	//   1 3 - - - -
-		makeEdge(3, 1, 2);	//   2 1 - - 6 -
-		makeEdge(2, 3, 6);	//   3 4 2 - - -
-		makeEdge(4, 3, 1);	//   4 - - - 1 -
+//		makeEdge(1, 0, 3);	//     0 1 2 3 4
+//		makeEdge(2, 0, 1);	//   0 - - - - -
+//		makeEdge(3, 0, 4);	//   1 3 - - - -
+//		makeEdge(3, 1, 2);	//   2 1 - - 6 -
+//		makeEdge(2, 3, 6);	//   3 4 2 - - -
+//		makeEdge(4, 3, 1);	//   4 - - - 1 -
+		makeEdge(0, 1, 4);
+		makeEdge(0, 2, 2);
+		makeEdge(1, 2, 3);
+		makeEdge(1, 3, 5);
+		makeEdge(2, 3, 8);
+		makeEdge(2, 1, 1);
+	}
+	// get the name of the vertex by its index
+	public String getVertexName(Integer index){
+		return NAMES[index];
 	}
 	/*
 	 * Getters and Setters

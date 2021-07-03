@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2805b727-eafe-4775-ab1d-cdfeca24ad11" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Dijkstra.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Lab12/WeightedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab12/WeightedGraph.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WeightedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WeightedGraph.java" afterDir="false" />
@@ -74,22 +75,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1625253899728" />
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1625257582825">
+    <state width="1500" height="207" key="GridCell.Tab.0.bottom" timestamp="1625346991285">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1625257582825" />
-    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1625257582824">
+    <state width="1500" height="207" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1625346991285" />
+    <state width="1500" height="207" key="GridCell.Tab.0.center" timestamp="1625346991285">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1625257582824" />
-    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1625257582824">
+    <state width="1500" height="207" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1625346991285" />
+    <state width="1500" height="207" key="GridCell.Tab.0.left" timestamp="1625346991285">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1625257582824" />
-    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1625257582824">
+    <state width="1500" height="207" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1625346991285" />
+    <state width="1500" height="207" key="GridCell.Tab.0.right" timestamp="1625346991285">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1625257582824" />
+    <state width="1500" height="207" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1625346991285" />
     <state x="477" y="39" key="refactoring.ChangeSignatureDialog" timestamp="1625256679750">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
