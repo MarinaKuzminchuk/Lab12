@@ -7,21 +7,44 @@ public class WeightedGraph {
 	// for Integer[][] matrix Java will automatically fill elements with "null" value if they don't exist
 	// to remove an edge set the value of the element to "null"
 	private Integer[][] adjacencyMatrix;
+	private Integer vertCount;
+	private Integer edgeCount;
 	// list of all the vertices in a graph
 	private List<Vertex> vertices = new ArrayList<>();
 	
 	public static void main(String[] args) {
 		
-		WeightedGraph wG = new WeightedGraph(5, 100, true);
+		WeightedGraph wG = new WeightedGraph(6, 10, true); 
 
-		//Prints Matrix to the console
 		
-		System.out.println("B R M A W");
-		System.out.println(wG.printEdge(0, 0) + wG.printEdge(0, 1) + wG.printEdge(0, 2) + wG.printEdge(0, 3) + wG.printEdge(0, 4) + wG.getVertex(0).getName());
-		System.out.println(wG.printEdge(1, 0) + wG.printEdge(1, 1) + wG.printEdge(1, 2) + wG.printEdge(1, 3) + wG.printEdge(1, 4) + wG.getVertex(1).getName());
-		System.out.println(wG.printEdge(2, 0) + wG.printEdge(2, 1) + wG.printEdge(2, 2) + wG.printEdge(2, 3) + wG.printEdge(2, 4) + wG.getVertex(2).getName());
-		System.out.println(wG.printEdge(3, 0) + wG.printEdge(3, 1) + wG.printEdge(3, 2) + wG.printEdge(3, 3) + wG.printEdge(3, 4) + wG.getVertex(3).getName());
-		System.out.println(wG.printEdge(4, 0) + wG.printEdge(4, 1) + wG.printEdge(4, 2) + wG.printEdge(4, 3) + wG.printEdge(4, 4) + wG.getVertex(4).getName());
+		//Prints Matrix to the console
+		String r = "";    //String to display initial letters of vertexes in initial row
+		String t = "";    //String used to print out individual rows of matrix
+		
+		//Printing first row
+		for(int i = 0; i < wG.vertCount; i++) {
+			 r = r + wG.getVertex(i).getName().charAt(0) + " ";
+		}
+		System.out.println(r);
+		//Printing matrix
+		for(int h = 0; h < wG.vertCount; h++) {
+			for(int v = 0; v < wG.vertCount; v++) {
+			t = t + wG.printEdge(h, v);
+			if(v == wG.vertCount - 1) {
+				System.out.println(t + wG.getVertex(h).getName());   //Print out name of Vertex at the end
+				t = "";
+			}
+			}
+		}
+	
+		
+//		Old hard-coded Matrix
+//		System.out.println("B R M A W");
+//		System.out.println(wG.printEdge(0, 0) + wG.printEdge(0, 1) + wG.printEdge(0, 2) + wG.printEdge(0, 3) + wG.printEdge(0, 4) + wG.getVertex(0).getName());
+//		System.out.println(wG.printEdge(1, 0) + wG.printEdge(1, 1) + wG.printEdge(1, 2) + wG.printEdge(1, 3) + wG.printEdge(1, 4) + wG.getVertex(1).getName());
+//		System.out.println(wG.printEdge(2, 0) + wG.printEdge(2, 1) + wG.printEdge(2, 2) + wG.printEdge(2, 3) + wG.printEdge(2, 4) + wG.getVertex(2).getName());
+//		System.out.println(wG.printEdge(3, 0) + wG.printEdge(3, 1) + wG.printEdge(3, 2) + wG.printEdge(3, 3) + wG.printEdge(3, 4) + wG.getVertex(3).getName());
+//		System.out.println(wG.printEdge(4, 0) + wG.printEdge(4, 1) + wG.printEdge(4, 2) + wG.printEdge(4, 3) + wG.printEdge(4, 4) + wG.getVertex(4).getName());
 
 		System.out.println(Dijkstra.cheapestPath(wG, 0, 3));
 		System.out.println(Dijkstra.shortestPath(wG, 0, 3));
@@ -46,6 +69,8 @@ public class WeightedGraph {
 	 * Constructor initiates a Matrix, Vertexes and Edges
 	 */
 	public WeightedGraph(int verts, int edges, boolean random) {
+		vertCount = verts;
+		edgeCount = edges;
 		adjacencyMatrix = new Integer[verts][verts];
 		createVertices(verts);
 		if(random) {
