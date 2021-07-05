@@ -14,7 +14,7 @@ public class WeightedGraph {
 	
 	public static void main(String[] args) {
 		
-		WeightedGraph wG = new WeightedGraph(6, 10, true); 
+		WeightedGraph wG = new WeightedGraph(10, 100, true);
 
 		
 		//Prints Matrix to the console
@@ -36,8 +36,7 @@ public class WeightedGraph {
 			}
 			}
 		}
-	
-		
+
 //		Old hard-coded Matrix
 //		System.out.println("B R M A W");
 //		System.out.println(wG.printEdge(0, 0) + wG.printEdge(0, 1) + wG.printEdge(0, 2) + wG.printEdge(0, 3) + wG.printEdge(0, 4) + wG.getVertex(0).getName());
@@ -46,8 +45,30 @@ public class WeightedGraph {
 //		System.out.println(wG.printEdge(3, 0) + wG.printEdge(3, 1) + wG.printEdge(3, 2) + wG.printEdge(3, 3) + wG.printEdge(3, 4) + wG.getVertex(3).getName());
 //		System.out.println(wG.printEdge(4, 0) + wG.printEdge(4, 1) + wG.printEdge(4, 2) + wG.printEdge(4, 3) + wG.printEdge(4, 4) + wG.getVertex(4).getName());
 
-		System.out.println(Dijkstra.cheapestPath(wG, 0, 3));
-		System.out.println(Dijkstra.shortestPath(wG, 0, 3));
+		System.out.println("Cheapest Path: " + wG.cheapestPathBetweenRandomVertexes());
+		System.out.println("Shortest Path: " + wG.shortestPathBetweenRandomVertexes());
+	}
+
+	public List<String> shortestPathBetweenRandomVertexes(){
+		Random r = new Random();
+		int vertexFrom = r.nextInt(vertCount);
+		int vertexTo = r.nextInt(vertCount);
+		while(vertexFrom == vertexTo) {
+			vertexTo = r.nextInt(vertCount);
+		}
+		System.out.println("Calculating shortest path between " + getVertexName(vertexFrom) + " and " + getVertexName(vertexTo));
+		return Dijkstra.shortestPath(this, vertexFrom, vertexTo);
+	}
+
+	public List<String> cheapestPathBetweenRandomVertexes(){
+		Random r = new Random();
+		int vertexFrom = r.nextInt(vertCount);
+		int vertexTo = r.nextInt(vertCount);
+		while(vertexFrom == vertexTo) {
+			vertexTo = r.nextInt(vertCount);
+		}
+		System.out.println("Calculating cheapest path between " + getVertexName(vertexFrom) + " and " + getVertexName(vertexTo));
+		return Dijkstra.cheapestPath(this, vertexFrom, vertexTo);
 	}
 
 	Map<Integer, Integer> getNeighbourWithEdgeWeight(int vertex) {

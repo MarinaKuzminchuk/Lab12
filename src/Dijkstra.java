@@ -28,6 +28,9 @@ public class Dijkstra {
         }
         boolean done = false;
         while (!done) {
+            if (labelQueue.isEmpty()) {
+                return new ArrayList<>();
+            }
             // Step 2
             Label r = labelQueue.remove();
             Map<Integer, Integer> incidentEdgesR = graph.getNeighbourWithEdgeWeight(r.labeledVertex);
@@ -82,6 +85,9 @@ public class Dijkstra {
         }
         boolean done = false;
         while (!done) {
+            if (labelQueue.isEmpty()) {
+                return new ArrayList<>();
+            }
             // Step 2
             Label r = labelQueue.remove();
             Map<Integer, Integer> incidentEdgesR = graph.getNeighbourWithEdgeWeight(r.labeledVertex);
